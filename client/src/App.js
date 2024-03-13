@@ -1,15 +1,38 @@
 import projectAPI from './api/project';
 import blogAPI from './api/blog';
+import {
+  createBrowserRouter,
+  RouterProvider
+} from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <div>Hello World!</div>
+  },
+  {
+    path: '/project',
+    element: <div>Project Main</div>,
+  },
+  {
+    path: '/project/:id',
+    element: <div>Project Detail</div>
+  },
+  {
+    path: '/blog',
+    element: <div>Blog Main</div>,
+  },
+  {
+    path: '/blog/:id',
+    element: <div>Blog Detail</div>
+  }
+]);
+
 
 function App() {
-  projectAPI.getProjectList();
-  projectAPI.getProject(5);
-  blogAPI.getBlogList();
-  blogAPI.getBlog(1);
-  
   return (
     <div>
-      <span>Hello World!</span>
+      <RouterProvider router={router} />
     </div>
   );
 }
