@@ -1,16 +1,17 @@
 import data from "./data/blog.json";
 
 function getBlogList() {
-    console.log(data.blog_list);
+    return data.blog_list
 }
 
 function getBlog(blog_id) {
     const target = data.blog_list.filter((blog) => {
+        console.log(blog["id"], '\t', blog_id)
         return blog["id"] === blog_id;
     });
-    console.log(target);
 
-    return target;
+    console.log("result is", target);
+    return target[0];
 }
 
-export default {getBlogList, getBlog};
+export { getBlogList, getBlog };

@@ -1,5 +1,6 @@
 import projectAPI from './api/project';
-import blogAPI from './api/blog';
+import { BlogMainLoader, BlogDetailLoader } from './hoc/dataLoader'
+
 import {
   createBrowserRouter,
   RouterProvider
@@ -20,11 +21,17 @@ const router = createBrowserRouter([
   },
   {
     path: '/blog',
-    element: <div>Blog Main</div>,
+    element: <div>
+    <BlogMainLoader />
+    <span>Project Main</span>
+    </div>,
   },
   {
-    path: '/blog/:id',
-    element: <div>Blog Detail</div>
+    path: '/blog/:blog_id',
+    element: <div>
+      <BlogDetailLoader />
+      <span>Blog Detail</span>
+    </div>
   }
 ]);
 
