@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from "react";
 import { useParams } from "react-router";
 import { getBlogList, getBlog } from '../api/blog';
-import { BlogCard } from '../components/base/BlogCard';
+import { BlogCard, BlogThumbnail } from '../components/base/Card';
 
 
 function BlogMainLoader() {
@@ -30,7 +30,7 @@ function BlogMainLoader() {
     return (
         <div>
             {blogList.map((blog, index) => {
-                return <BlogCard key={index} title={blog.title} />
+                return <BlogThumbnail key={index} title={blog.title} created_date={blog.created_date}/>
             })}
         </div>
     )
@@ -64,13 +64,13 @@ function BlogDetailLoader() {
 
     return (
         <div>
-            <BlogCard title={blog.title} />
+            <BlogCard
+                title={blog.title}
+                created_date={blog.created_date}
+                content={blog.content}
+            />
         </div>
     )
 }
-
-// const blogDetailLoader = ({project_id}) => {
-//     useEffect(getBlog(project_id), []);
-// }
 
 export { BlogMainLoader, BlogDetailLoader };
